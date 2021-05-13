@@ -3,7 +3,7 @@
     "path": "C:/Users/mfvargas/gf0604-procesamientodatosgeograficos/2021i/2021i-leccion-10/01-r-graficacion-introduccion.Rmd",
     "project_path": "01-r-graficacion-introduccion.Rmd",
     "type": "r_markdown",
-    "hash": "98860073",
+    "hash": "0",
     "contents": "",
     "dirty": false,
     "created": 1620877351116.0,
@@ -13,15 +13,15 @@
         "tempName": "Untitled1",
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "12,14",
-        "scrollLine": "0"
+        "cursorPosition": "295,321",
+        "scrollLine": "285"
     },
     "folds": "",
-    "lastKnownWriteTime": 1620877492,
+    "lastKnownWriteTime": 1620878092,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1620877492893,
+    "last_content_update": 1620878092345,
     "read_only": false,
     "read_only_alternatives": []
 }
