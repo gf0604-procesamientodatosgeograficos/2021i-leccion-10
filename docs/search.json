@@ -1,6 +1,13 @@
 {
   "articles": [
     {
+      "path": "01-r-graficacion-introduccion.html",
+      "title": "Graficación con R",
+      "author": [],
+      "contents": "\r\n\r\nContents\r\nIntroducción\r\n\r\nIntroducción\r\n\r\n\r\n\r\n",
+      "last_modified": "2021-05-12T21:45:00-06:00"
+    },
+    {
       "path": "about.html",
       "title": "About this site",
       "description": "Some additional details about the website",
