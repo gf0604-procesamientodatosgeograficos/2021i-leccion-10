@@ -16,14 +16,14 @@ knitr::opts_chunk$set(echo = TRUE)
 En los siguientes ejemplos y ejercicios, se utilizarán dos conjuntos de datos, los cuales se cargan en data frames con la función [read.csv()](https://www.rdocumentation.org/packages/iotools/versions/0.3-1/topics/read.csv.raw) y se visualizan con la función [View()](https://www.rdocumentation.org/packages/utils/versions/3.6.2/topics/View).
 
 **Casos de COVID-19 en Costa Rica**  
-Este conjunto de datos publicados por el [Ministerio de Salud de Costa Rica](http://geovision.uned.ac.cr/oges/) es un ejemplo de una [serie temporal](https://en.wikipedia.org/wiki/Time_series): una sucesión de datos medidos en determinados momentos y ordenados cronológicamente. Contiene un registro por día con las estadísticas de casos positivos, fallecidos, activos y recuperados.
+Este conjunto de datos es publicado por el [Ministerio de Salud de Costa Rica](http://geovision.uned.ac.cr/oges/). Contiene un registro por día con las estadísticas de casos positivos, fallecidos, activos y recuperados.
 
 ```{r}
 # Carga de datos desde un archivo CSV
 cr_covid19 <- 
   read.csv(
-    file='https://raw.githubusercontent.com/curso-r-simocute/datos/main/covid/04_09_21_CSV_GENERAL.csv', 
-    sep = ";"
+    file='https://raw.githubusercontent.com/gf0604-procesamientodatosgeograficos/2021i-datos/main/ministerio-salud/covid/ultimafecha_CSV_GENERAL.csv', 
+    sep = ","
   )
 ```
 
@@ -39,7 +39,7 @@ Este conjunto de datos publicados por el [Centro de Coordinación para la Preven
 # Carga de datos desde un archivo CSV
 ca_covid19 <- 
   read.csv(
-    file='https://raw.githubusercontent.com/curso-r-simocute/datos/main/covid/covid-card.csv'
+    file='https://raw.githubusercontent.com/gf0604-procesamientodatosgeograficos/2021i-datos/main/cepredenac/covid/ultimafecha_CSV_GENERAL_CENTROAMERICA.csv'
   )
 ```
 
@@ -70,6 +70,7 @@ install.packages("plotly")
 install.packages("dplyr")
 
 # Opcionalmente, pueden instalarse todos los paquetes de Tidyverse
+# Esta instalación toma más tiempo por tratarse de varios paquetes
 install.packages("tidyverse")
 ```
 
@@ -99,7 +100,7 @@ Para obtener información sobre un paquete, puede utilizarse el parámetro ```he
 library(help="ggplot2")
 ```
 
-## Tipos de gráficos
+## Algunos tipos de gráficos
 
 ### Gráficos de dispersión
 Un [diagrama o gráfico de dispersión (_scatter plot_)](https://www.data-to-viz.com/graph/scatter.html) muestra la relación entre dos variables numéricas. Para cada punto de datos, el valor de la primera variable se representa en el eje X y el de la segunda variable en el eje Y.
@@ -138,6 +139,7 @@ plot(
   xlab='Fecha',
   ylab='Casos positivos'
 )
+axis(1, cr_covid19$FECHA, format(cr_covid19$FECHA, "%d %b"), tick = FALSE)
 ```
 
 Con la función [ggplot()](https://ggplot2.tidyverse.org/reference/ggplot.html), del paquete ggplot2, puede obtenerse un resultado similar:
@@ -173,6 +175,7 @@ plot(
   ylab='Casos positivos',
   type="l"
 )
+axis(1, cr_covid19$FECHA, format(cr_covid19$FECHA, "%d %b"), tick = FALSE)
 ```
 
 Si se desea agregar más líneas, o series de puntos, debe entonces llamarse a ```plot()``` para la primera variable (ej. la primera línea) y luego agregar las restantes series de líneas o de puntos con las funciones [lines()](https://www.rdocumentation.org/packages/graphics/versions/3.6.2/topics/lines) y [points()](https://www.rdocumentation.org/packages/graphics/versions/3.6.2/topics/points).
@@ -188,6 +191,7 @@ plot(
   type="l",
   col="blue"
 )
+axis(1, cr_covid19$FECHA, format(cr_covid19$FECHA, "%d %b"), tick = FALSE)
 
 # Casos activos
 lines(cr_covid19$FECHA, cr_covid19$activos, col="red")
@@ -257,10 +261,10 @@ Ejercicio 03:
 a. Modifique el gráfico anterior y muestre las etiquetas de los controles en español.  
 **
 
-## Gráficos de barras
+### Gráficos de barras
 Los [gráficos de barras (_barcharts_ o _barplots_)](https://www.data-to-viz.com/graph/barplot.html) muestran la relación entre una variable categórica y una variable numérica. Cada entidad de la variable categórica es representada mediante una barra, en la que su altura representa el valor correspondiente de la variable numérica.
 
-Para los ejemplos de esta sección, se utilizará el conjunto de datos de casos de COVID-19 de Centroamérica y República Dominicana. Para facilitar su visualización, se ordenan los registros de acuerdo con la columna de casos confirmados, mediante la función [order()](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/order).
+Para los ejemplos de esta sección, se utilizará el conjunto de datos de casos de COVID-19 de Centroamérica. Para facilitar su visualización, se ordenan los registros de acuerdo con la columna de casos confirmados, mediante la función [order()](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/order).
 
 ```{r}
 # Ordenar de mayor a menor
@@ -278,7 +282,7 @@ barplot(
   names.arg=ca_covid19.positivos$pais, 
   xlab="País", 
   ylab="Casos positivos", 
-  main="Casos positivos de COVID-19 en Centroamérica y DOM"
+  main="Casos positivos de COVID-19 en Centroamérica"
 )
 ```
 
@@ -286,7 +290,7 @@ La función [geom_col()](https://ggplot2.tidyverse.org/reference/geom_bar.html),
 
 ```{r}
 ggplot(ca_covid19, aes(x=reorder(pais, -positivos), y=positivos)) +
-  ggtitle("Casos positivos de COVID-19 en Centroamérica y DOM") +
+  ggtitle("Casos positivos de COVID-19 en Centroamérica") +
   xlab("País") + 
   ylab("Casos positivos") +  
   geom_col() +
