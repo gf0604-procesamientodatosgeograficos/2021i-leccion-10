@@ -1,0 +1,26 @@
+{
+  "articles": [
+    {
+      "path": "about.html",
+      "title": "About this site",
+      "description": "Some additional details about the website",
+      "author": [],
+      "contents": "\r\n\r\n\r\n\r\n",
+      "last_modified": "2021-05-12T20:55:52-06:00"
+    },
+    {
+      "path": "index.html",
+      "title": "GF0604 Procesamiento de datos geográficos 2021-I. Lección 10",
+      "description": "Curso GF0604 Procesamiento de datos geográficos. Escuela de Geografía, Universidad de Costa Rica. Primer ciclo lectivo 2021. Lección 10.\n",
+      "author": [
+        {
+          "name": "Manuel Vargas",
+          "url": "https://github.com/mfvargas"
+        }
+      ],
+      "contents": "\r\n\r\nContents\r\nResumen\r\nTrabajo previo\r\nContenidos\r\n\r\nResumen\r\nEn esta lección, se estudiarán las funcionalidades de graficación del lenguaje de programación R, incluyendo:\r\nPaquetes de graficación de R.\r\nTrabajo previo\r\nLea los capítulos del 2 al 5 de Chang, W. (2018). R graphics cookbook: Practical recipes for visualizing data (Second edition).\r\nContenidos\r\n01 Graficación con R - Introducción\r\n\r\n\r\n\r\n",
+      "last_modified": "2021-05-12T21:15:09-06:00"
+    }
+  ],
+  "collections": []
+}
