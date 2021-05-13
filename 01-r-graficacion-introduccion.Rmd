@@ -32,7 +32,7 @@ cr_covid19 <-
 View(cr_covid19)
 ```
 
-**Casos de COVID-19 en Centroamérica y República Dominicana**  
+**Casos de COVID-19 en Centroamérica**  
 Este conjunto de datos publicados por el [Centro de Coordinación para la Prevención de los Desastres en Centroamérica y República Dominicana (Cepredenac)](http://www.cepredenac.org/) tiene un registro por país con los casos (positivos, fallecidos, activos, recuperados) acumulados hasta la fecha en cada uno.
 
 ```{r collapse=TRUE}
