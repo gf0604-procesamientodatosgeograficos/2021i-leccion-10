@@ -8,6 +8,13 @@
       "last_modified": "2021-05-13T00:43:07-06:00"
     },
     {
+      "path": "02-r-graficacion-barras.html",
+      "title": "Graficación con R",
+      "author": [],
+      "contents": "\r\n\r\nContents\r\nGráficos de barras\r\nCarga de paquetes\r\nConjuntos de datos utilizados\r\nProcesamiento\r\nPaquete base\r\n\r\n\r\nGráficos de barras\r\nCarga de paquetes\r\n\r\n\r\n# Carga de ggplot2\r\nlibrary(ggplot2)\r\n\r\n# Carga de plotly\r\nlibrary(plotly)\r\n\r\n# Carga de dplyr\r\nlibrary(dplyr)\r\n\r\n\r\n\r\nConjuntos de datos utilizados\r\nRegistros de presencia de mamíferos de Costa Rica\r\nEn los siguientes ejemplos y ejercicios, se utilizará un conjunto de registros de presencia de mamíferos de Costa Rica, obtenido a través de una consulta al portal de datos de la Infraestructura Mundial de Información en Biodiversidad (GBIF).\r\n\r\n\r\n# Carga de datos desde un archivo CSV (separado por tabuladores)\r\nregistros_mammalia_cr <- \r\n  read.csv(\r\n    file='https://raw.githubusercontent.com/gf0604-procesamientodatosgeograficos/2021i-datos/main/gbif/mammalia-cr-registros.csv', \r\n    sep = \"\\t\"\r\n  )\r\n\r\n\r\n\r\n\r\n\r\n# Despliegue de los datos\r\nView(registros_mammalia_cr)\r\n\r\n\r\n\r\nProcesamiento\r\n\r\n\r\n# Cantidad de registros por año de observación/recolección\r\nregistros_agrupados_x_anyo <-\r\n  registros_mammalia_cr %>%\r\n  dplyr::count(year)\r\n\r\n# Cantidad de registros por orden taxonómico\r\nregistros_agrupados_x_orden <-\r\n  registros_mammalia_cr %>%\r\n  dplyr::count(order)\r\n\r\n# Cantidad de registros por orden y familia\r\nregistros_agrupados_x_orden_family <-\r\n  registros_mammalia_cr %>%\r\n  dplyr::count(order, family)\r\n\r\n\r\n\r\nPaquete base\r\nRegistros por año\r\n\r\n\r\n# Gráfico de barras verticales\r\nbarplot(\r\n  registros_agrupados_x_anyo$n, \r\n  names.arg = registros_agrupados_x_anyo$year,\r\n  main = \"Cantidad de registros de mamíferos en Costa Rica por año\",\r\n)\r\n\r\n\r\n\r\n# Gráfico de barras horizontales\r\nbarplot(\r\n  registros_agrupados_x_anyo$n, \r\n  names.arg = registros_agrupados_x_anyo$year,\r\n  main = \"Cantidad de registros de mamíferos en Costa Rica por año\",\r\n  horiz = TRUE,\r\n  las=1\r\n)\r\n\r\n\r\n\r\n\r\nRegistros por orden taxonómico\r\n\r\n\r\n# Gráfico de barras verticales\r\nbarplot(\r\n  registros_agrupados_x_orden$n, \r\n  names.arg = registros_agrupados_x_orden$order,\r\n  main = \"Cantidad de registros de mamíferos en Costa Rica por orden taxonómico\",\r\n)\r\n\r\n\r\n\r\n# Gráfico de barras horizontales\r\npar(mai=c(1, 1, 1, 1))\r\nbarplot(\r\n  registros_agrupados_x_orden$n, \r\n  names.arg = registros_agrupados_x_orden$order,\r\n  main = \"Cantidad de registros de mamíferos en Costa Rica por orden taxonómico\",\r\n  horiz = TRUE,\r\n  las=1\r\n)\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
+      "last_modified": "2021-05-20T00:59:42-06:00"
+    },
+    {
       "path": "about.html",
       "title": "About this site",
       "description": "Some additional details about the website",
@@ -17,16 +24,16 @@
     },
     {
       "path": "index.html",
-      "title": "GF0604 Procesamiento de datos geográficos 2021-I. Lección 10",
-      "description": "Curso GF0604 Procesamiento de datos geográficos. Escuela de Geografía, Universidad de Costa Rica. Primer ciclo lectivo 2021. Lección 10.\n",
+      "title": "GF0604 Procesamiento de datos geográficos 2021-I. Lecciones 10 y 12",
+      "description": "Curso GF0604 Procesamiento de datos geográficos. Escuela de Geografía, Universidad de Costa Rica. Primer ciclo lectivo 2021. Lecciones 10 y 12.\n",
       "author": [
         {
           "name": "Manuel Vargas",
           "url": "https://github.com/mfvargas"
         }
       ],
-      "contents": "\r\n\r\nContents\r\nResumen\r\nTrabajo previo\r\nContenidos\r\n\r\nResumen\r\nEn esta lección, se estudiarán las funcionalidades de graficación del lenguaje de programación R, incluyendo:\r\nPaquetes de graficación de R.\r\nTrabajo previo\r\nLea los capítulos del 2 al 5 de Chang, W. (2018). R graphics cookbook: Practical recipes for visualizing data (Second edition).\r\nContenidos\r\n01 Graficación con R - Introducción\r\n\r\n\r\n\r\n",
-      "last_modified": "2021-05-12T22:38:49-06:00"
+      "contents": "\r\n\r\nContents\r\nResumen\r\nTrabajo previo\r\nContenidos\r\n\r\nResumen\r\nEn esta lección, se estudiarán las funcionalidades de graficación del lenguaje de programación R, incluyendo:\r\nPaquetes de graficación de R.\r\nGráficos de barras.\r\nTrabajo previo\r\nLea los capítulos del 2 al 5 de Chang, W. (2018). R graphics cookbook: Practical recipes for visualizing data (Second edition).\r\nContenidos\r\n01 Graficación con R - Introducción02 Graficación con R - Gráficos de barras\r\n\r\n\r\n\r\n",
+      "last_modified": "2021-05-19T21:11:50-06:00"
     }
   ],
   "collections": []

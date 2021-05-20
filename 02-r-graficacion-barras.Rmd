@@ -1,0 +1,109 @@
+---
+title: "Graficación con R"
+output: 
+  distill::distill_article:
+    toc: true
+    toc_depth: 4
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Gráficos de barras
+
+## Carga de paquetes
+
+
+```{r message = FALSE}
+# Carga de ggplot2
+library(ggplot2)
+
+# Carga de plotly
+library(plotly)
+
+# Carga de dplyr
+library(dplyr)
+```
+
+
+## Conjuntos de datos utilizados
+
+**Registros de presencia de mamíferos de Costa Rica**  
+En los siguientes ejemplos y ejercicios, se utilizará un conjunto de registros de presencia de mamíferos de Costa Rica, obtenido a través de una [consulta](https://doi.org/10.15468/dl.y3gadr) al portal de datos de la [Infraestructura Mundial de Información en Biodiversidad (GBIF)](https://www.gbif.org/).
+
+```{r}
+# Carga de datos desde un archivo CSV (separado por tabuladores)
+registros_mammalia_cr <- 
+  read.csv(
+    file='https://raw.githubusercontent.com/gf0604-procesamientodatosgeograficos/2021i-datos/main/gbif/mammalia-cr-registros.csv', 
+    sep = "\t"
+  )
+```
+
+```{r eval=FALSE}
+# Despliegue de los datos
+View(registros_mammalia_cr)
+```
+
+## Procesamiento
+
+```{r}
+# Cantidad de registros por año de observación/recolección
+registros_agrupados_x_anyo <-
+  registros_mammalia_cr %>%
+  dplyr::count(year)
+
+# Cantidad de registros por orden taxonómico
+registros_agrupados_x_orden <-
+  registros_mammalia_cr %>%
+  dplyr::count(order)
+
+# Cantidad de registros por orden y familia
+registros_agrupados_x_orden_family <-
+  registros_mammalia_cr %>%
+  dplyr::count(order, family)
+```
+
+## Paquete base
+
+**Registros por año**
+
+```{r}
+# Gráfico de barras verticales
+barplot(
+  registros_agrupados_x_anyo$n, 
+  names.arg = registros_agrupados_x_anyo$year,
+  main = "Cantidad de registros de mamíferos en Costa Rica por año",
+)
+
+# Gráfico de barras horizontales
+barplot(
+  registros_agrupados_x_anyo$n, 
+  names.arg = registros_agrupados_x_anyo$year,
+  main = "Cantidad de registros de mamíferos en Costa Rica por año",
+  horiz = TRUE,
+  las=1
+)
+```
+
+**Registros por orden taxonómico**
+
+```{r}
+# Gráfico de barras verticales
+barplot(
+  registros_agrupados_x_orden$n, 
+  names.arg = registros_agrupados_x_orden$order,
+  main = "Cantidad de registros de mamíferos en Costa Rica por orden taxonómico",
+)
+
+# Gráfico de barras horizontales
+par(mai=c(1, 1, 1, 1))
+barplot(
+  registros_agrupados_x_orden$n, 
+  names.arg = registros_agrupados_x_orden$order,
+  main = "Cantidad de registros de mamíferos en Costa Rica por orden taxonómico",
+  horiz = TRUE,
+  las=1
+)
+```

@@ -86,31 +86,27 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </style>
 
   <!--radix_placeholder_meta_tags-->
-  <title>GF0604 Procesamiento de datos geograficos 2021-I. Lecciones 10 y 12: GF0604 Procesamiento de datos geográficos 2021-I. Lecciones 10 y 12</title>
+  <title>GF0604 Procesamiento de datos geograficos 2021-I. Lecciones 10 y 12: Graficación con R</title>
 
-  <meta property="description" itemprop="description" content="Curso GF0604 Procesamiento de datos geográficos. Escuela de Geografía, Universidad de Costa Rica. Primer ciclo lectivo 2021. Lecciones 10 y 12."/>
 
   <link rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/"/>
 
-  <meta name="article:author" content="Manuel Vargas"/>
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="GF0604 Procesamiento de datos geograficos 2021-I. Lecciones 10 y 12: GF0604 Procesamiento de datos geográficos 2021-I. Lecciones 10 y 12"/>
+  <meta property="og:title" content="GF0604 Procesamiento de datos geograficos 2021-I. Lecciones 10 y 12: Graficación con R"/>
   <meta property="og:type" content="article"/>
-  <meta property="og:description" content="Curso GF0604 Procesamiento de datos geográficos. Escuela de Geografía, Universidad de Costa Rica. Primer ciclo lectivo 2021. Lecciones 10 y 12."/>
   <meta property="og:locale" content="en_US"/>
   <meta property="og:site_name" content="GF0604 Procesamiento de datos geograficos 2021-I. Lecciones 10 y 12"/>
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="GF0604 Procesamiento de datos geograficos 2021-I. Lecciones 10 y 12: GF0604 Procesamiento de datos geográficos 2021-I. Lecciones 10 y 12"/>
-  <meta property="twitter:description" content="Curso GF0604 Procesamiento de datos geográficos. Escuela de Geografía, Universidad de Costa Rica. Primer ciclo lectivo 2021. Lecciones 10 y 12."/>
+  <meta property="twitter:title" content="GF0604 Procesamiento de datos geograficos 2021-I. Lecciones 10 y 12: Graficación con R"/>
 
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","author","description","site"]}},"value":[{"type":"character","attributes":{},"value":["GF0604 Procesamiento de datos geográficos 2021-I. Lecciones 10 y 12"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url","affiliation","affiliation_url"]}},"value":[{"type":"character","attributes":{},"value":["Manuel Vargas"]},{"type":"character","attributes":{},"value":["https://github.com/mfvargas"]},{"type":"character","attributes":{},"value":["Universidad de Costa Rica"]},{"type":"character","attributes":{},"value":["https://www.ucr.ac.cr/"]}]}]},{"type":"character","attributes":{},"value":["Curso GF0604 Procesamiento de datos geográficos. Escuela de Geografía, Universidad de Costa Rica. Primer ciclo lectivo 2021. Lecciones 10 y 12.\n"]},{"type":"character","attributes":{},"value":["distill::distill_website"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","output"]}},"value":[{"type":"character","attributes":{},"value":["Graficación con R"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","toc_depth"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"integer","attributes":{},"value":[4]}]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -2410,7 +2406,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"GF0604 Procesamiento de datos geográficos 2021-I. Lecciones 10 y 12","description":"Curso GF0604 Procesamiento de datos geográficos. Escuela de Geografía, Universidad de Costa Rica. Primer ciclo lectivo 2021. Lecciones 10 y 12.","authors":[{"author":"Manuel Vargas","authorURL":"https://github.com/mfvargas","affiliation":"Universidad de Costa Rica","affiliationURL":"https://www.ucr.ac.cr/","orcidID":""}]}
+{"title":"Graficación con R","authors":[]}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2442,42 +2438,136 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--/radix_placeholder_site_before_body-->
 
 <div class="d-title">
-<h1>GF0604 Procesamiento de datos geográficos 2021-I. Lecciones 10 y 12</h1>
+<h1>Graficación con R</h1>
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
-<p><p>Curso GF0604 Procesamiento de datos geográficos. Escuela de Geografía, Universidad de Costa Rica. Primer ciclo lectivo 2021. Lecciones 10 y 12.</p></p>
-</div>
-
-<div class="d-byline">
-  Manuel Vargas <a href="https://github.com/mfvargas" class="uri">https://github.com/mfvargas</a> (Universidad de Costa Rica)<a href="https://www.ucr.ac.cr/" class="uri">https://www.ucr.ac.cr/</a>
-  
 
 </div>
+
 
 <div class="d-article">
 <div class="d-contents d-contents-float">
 <nav class="l-text toc figcaption" id="TOC">
 <h3>Contents</h3>
 <ul>
-<li><a href="#resumen">Resumen</a></li>
-<li><a href="#trabajo-previo">Trabajo previo</a></li>
-<li><a href="#contenidos">Contenidos</a></li>
+<li><a href="#gráficos-de-barras">Gráficos de barras</a>
+<ul>
+<li><a href="#carga-de-paquetes">Carga de paquetes</a></li>
+<li><a href="#conjuntos-de-datos-utilizados">Conjuntos de datos utilizados</a></li>
+<li><a href="#procesamiento">Procesamiento</a></li>
+<li><a href="#paquete-base">Paquete base</a></li>
+</ul></li>
 </ul>
 </nav>
 </div>
-<h1 id="resumen">Resumen</h1>
-<p>En esta lección, se estudiarán las funcionalidades de graficación del lenguaje de programación R, incluyendo:</p>
-<ul>
-<li>Paquetes de graficación de R.</li>
-<li>Gráficos de barras.</li>
-</ul>
-<h1 id="trabajo-previo">Trabajo previo</h1>
-<ul>
-<li>Lea los capítulos del 2 al 5 de <a href="https://r-graphics.org/">Chang, W. (2018). R graphics cookbook: Practical recipes for visualizing data (Second edition)</a>.</li>
-</ul>
-<h1 id="contenidos">Contenidos</h1>
-<p><a href="01-r-graficacion-introduccion.html">01 Graficación con R - Introducción</a><br />
-<a href="02-r-graficacion-barras.html">02 Graficación con R - Gráficos de barras</a></p>
+<h1 id="gráficos-de-barras">Gráficos de barras</h1>
+<h2 id="carga-de-paquetes">Carga de paquetes</h2>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Carga de ggplot2</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://ggplot2.tidyverse.org'>ggplot2</a></span><span class='op'>)</span>
+
+<span class='co'># Carga de plotly</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://plotly-r.com'>plotly</a></span><span class='op'>)</span>
+
+<span class='co'># Carga de dplyr</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<h2 id="conjuntos-de-datos-utilizados">Conjuntos de datos utilizados</h2>
+<p><strong>Registros de presencia de mamíferos de Costa Rica</strong><br />
+En los siguientes ejemplos y ejercicios, se utilizará un conjunto de registros de presencia de mamíferos de Costa Rica, obtenido a través de una <a href="https://doi.org/10.15468/dl.y3gadr">consulta</a> al portal de datos de la <a href="https://www.gbif.org/">Infraestructura Mundial de Información en Biodiversidad (GBIF)</a>.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Carga de datos desde un archivo CSV (separado por tabuladores)</span>
+<span class='va'>registros_mammalia_cr</span> <span class='op'>&lt;-</span> 
+  <span class='fu'><a href='https://rdrr.io/r/utils/read.table.html'>read.csv</a></span><span class='op'>(</span>
+    file<span class='op'>=</span><span class='st'>'https://raw.githubusercontent.com/gf0604-procesamientodatosgeograficos/2021i-datos/main/gbif/mammalia-cr-registros.csv'</span>, 
+    sep <span class='op'>=</span> <span class='st'>"\t"</span>
+  <span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Despliegue de los datos</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/View.html'>View</a></span><span class='op'>(</span><span class='va'>registros_mammalia_cr</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<h2 id="procesamiento">Procesamiento</h2>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Cantidad de registros por año de observación/recolección</span>
+<span class='va'>registros_agrupados_x_anyo</span> <span class='op'>&lt;-</span>
+  <span class='va'>registros_mammalia_cr</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/count.html'>count</a></span><span class='op'>(</span><span class='va'>year</span><span class='op'>)</span>
+
+<span class='co'># Cantidad de registros por orden taxonómico</span>
+<span class='va'>registros_agrupados_x_orden</span> <span class='op'>&lt;-</span>
+  <span class='va'>registros_mammalia_cr</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/count.html'>count</a></span><span class='op'>(</span><span class='va'>order</span><span class='op'>)</span>
+
+<span class='co'># Cantidad de registros por orden y familia</span>
+<span class='va'>registros_agrupados_x_orden_family</span> <span class='op'>&lt;-</span>
+  <span class='va'>registros_mammalia_cr</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/count.html'>count</a></span><span class='op'>(</span><span class='va'>order</span>, <span class='va'>family</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<h2 id="paquete-base">Paquete base</h2>
+<p><strong>Registros por año</strong></p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Gráfico de barras verticales</span>
+<span class='fu'><a href='https://rdrr.io/r/graphics/barplot.html'>barplot</a></span><span class='op'>(</span>
+  <span class='va'>registros_agrupados_x_anyo</span><span class='op'>$</span><span class='va'>n</span>, 
+  names.arg <span class='op'>=</span> <span class='va'>registros_agrupados_x_anyo</span><span class='op'>$</span><span class='va'>year</span>,
+  main <span class='op'>=</span> <span class='st'>"Cantidad de registros de mamíferos en Costa Rica por año"</span>,
+<span class='op'>)</span>
+</code></pre>
+</div>
+<img src="02-r-graficacion-barras_files/figure-html5/unnamed-chunk-5-1.png" width="624" />
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Gráfico de barras horizontales</span>
+<span class='fu'><a href='https://rdrr.io/r/graphics/barplot.html'>barplot</a></span><span class='op'>(</span>
+  <span class='va'>registros_agrupados_x_anyo</span><span class='op'>$</span><span class='va'>n</span>, 
+  names.arg <span class='op'>=</span> <span class='va'>registros_agrupados_x_anyo</span><span class='op'>$</span><span class='va'>year</span>,
+  main <span class='op'>=</span> <span class='st'>"Cantidad de registros de mamíferos en Costa Rica por año"</span>,
+  horiz <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  las<span class='op'>=</span><span class='fl'>1</span>
+<span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="02-r-graficacion-barras_files/figure-html5/unnamed-chunk-5-2.png" width="624" /></p>
+</div>
+<p><strong>Registros por orden taxonómico</strong></p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Gráfico de barras verticales</span>
+<span class='fu'><a href='https://rdrr.io/r/graphics/barplot.html'>barplot</a></span><span class='op'>(</span>
+  <span class='va'>registros_agrupados_x_orden</span><span class='op'>$</span><span class='va'>n</span>, 
+  names.arg <span class='op'>=</span> <span class='va'>registros_agrupados_x_orden</span><span class='op'>$</span><span class='va'>order</span>,
+  main <span class='op'>=</span> <span class='st'>"Cantidad de registros de mamíferos en Costa Rica por orden taxonómico"</span>,
+<span class='op'>)</span>
+</code></pre>
+</div>
+<img src="02-r-graficacion-barras_files/figure-html5/unnamed-chunk-6-1.png" width="624" />
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Gráfico de barras horizontales</span>
+<span class='fu'><a href='https://rdrr.io/r/graphics/par.html'>par</a></span><span class='op'>(</span>mai<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>1</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/graphics/barplot.html'>barplot</a></span><span class='op'>(</span>
+  <span class='va'>registros_agrupados_x_orden</span><span class='op'>$</span><span class='va'>n</span>, 
+  names.arg <span class='op'>=</span> <span class='va'>registros_agrupados_x_orden</span><span class='op'>$</span><span class='va'>order</span>,
+  main <span class='op'>=</span> <span class='st'>"Cantidad de registros de mamíferos en Costa Rica por orden taxonómico"</span>,
+  horiz <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  las<span class='op'>=</span><span class='fl'>1</span>
+<span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="02-r-graficacion-barras_files/figure-html5/unnamed-chunk-6-2.png" width="624" /></p>
+</div>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
