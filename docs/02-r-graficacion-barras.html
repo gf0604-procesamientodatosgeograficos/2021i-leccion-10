@@ -2454,8 +2454,12 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <ul>
 <li><a href="#carga-de-paquetes">Carga de paquetes</a></li>
 <li><a href="#conjuntos-de-datos-utilizados">Conjuntos de datos utilizados</a></li>
-<li><a href="#procesamiento">Procesamiento</a></li>
-<li><a href="#paquete-base">Paquete base</a></li>
+<li><a href="#paquete-base">Paquete base</a>
+<ul>
+<li><a href="#barras-simples">Barras simples</a></li>
+<li><a href="#barras-agrupadas">Barras agrupadas</a></li>
+<li><a href="#barras-agrupadas-1">Barras agrupadas</a></li>
+</ul></li>
 </ul></li>
 </ul>
 </nav>
@@ -2466,9 +2470,6 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Carga de ggplot2</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://ggplot2.tidyverse.org'>ggplot2</a></span><span class='op'>)</span>
-
-<span class='co'># Carga de plotly</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://plotly-r.com'>plotly</a></span><span class='op'>)</span>
 
 <span class='co'># Carga de dplyr</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span>
@@ -2496,45 +2497,62 @@ En los siguientes ejemplos y ejercicios, se utilizará un conjunto de registros 
 </code></pre>
 </div>
 </div>
-<h2 id="procesamiento">Procesamiento</h2>
+<h2 id="paquete-base">Paquete base</h2>
+<h3 id="barras-simples">Barras simples</h3>
+<p><strong>Cantidad de registros por año</strong></p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Cantidad de registros por año de observación/recolección</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Generación de un nuevo data frame</span>
 <span class='va'>registros_agrupados_x_anyo</span> <span class='op'>&lt;-</span>
   <span class='va'>registros_mammalia_cr</span> <span class='op'>%&gt;%</span>
   <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/count.html'>count</a></span><span class='op'>(</span><span class='va'>year</span><span class='op'>)</span>
 
-<span class='co'># Cantidad de registros por orden taxonómico</span>
+<span class='co'># Gráfico de barras verticales</span>
+<span class='fu'><a href='https://rdrr.io/r/graphics/barplot.html'>barplot</a></span><span class='op'>(</span>
+  <span class='va'>registros_agrupados_x_anyo</span><span class='op'>$</span><span class='va'>n</span>, 
+  names.arg <span class='op'>=</span> <span class='va'>registros_agrupados_x_anyo</span><span class='op'>$</span><span class='va'>year</span>,
+  main <span class='op'>=</span> <span class='st'>"Cantidad de registros de mamíferos por año"</span>,
+<span class='op'>)</span>
+</code></pre>
+</div>
+<img src="02-r-graficacion-barras_files/figure-html5/unnamed-chunk-4-1.png" width="624" />
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Gráfico de barras horizontales</span>
+<span class='fu'><a href='https://rdrr.io/r/graphics/barplot.html'>barplot</a></span><span class='op'>(</span>
+  <span class='va'>registros_agrupados_x_anyo</span><span class='op'>$</span><span class='va'>n</span>, 
+  names.arg <span class='op'>=</span> <span class='va'>registros_agrupados_x_anyo</span><span class='op'>$</span><span class='va'>year</span>,
+  main <span class='op'>=</span> <span class='st'>"Cantidad de registros de mamíferos por año"</span>,
+  horiz <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  las<span class='op'>=</span><span class='fl'>1</span>
+<span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="02-r-graficacion-barras_files/figure-html5/unnamed-chunk-4-2.png" width="624" /></p>
+</div>
+<p><strong>Cantidad de registros por orden taxonómico</strong></p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Generación de un nuevo data frame</span>
 <span class='va'>registros_agrupados_x_orden</span> <span class='op'>&lt;-</span>
   <span class='va'>registros_mammalia_cr</span> <span class='op'>%&gt;%</span>
   <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/count.html'>count</a></span><span class='op'>(</span><span class='va'>order</span><span class='op'>)</span>
 
-<span class='co'># Cantidad de registros por orden y familia</span>
-<span class='va'>registros_agrupados_x_orden_family</span> <span class='op'>&lt;-</span>
-  <span class='va'>registros_mammalia_cr</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/count.html'>count</a></span><span class='op'>(</span><span class='va'>order</span>, <span class='va'>family</span><span class='op'>)</span>
-</code></pre>
-</div>
-</div>
-<h2 id="paquete-base">Paquete base</h2>
-<p><strong>Registros por año</strong></p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Gráfico de barras verticales</span>
+<span class='co'># Gráfico de barras verticales</span>
 <span class='fu'><a href='https://rdrr.io/r/graphics/barplot.html'>barplot</a></span><span class='op'>(</span>
-  <span class='va'>registros_agrupados_x_anyo</span><span class='op'>$</span><span class='va'>n</span>, 
-  names.arg <span class='op'>=</span> <span class='va'>registros_agrupados_x_anyo</span><span class='op'>$</span><span class='va'>year</span>,
-  main <span class='op'>=</span> <span class='st'>"Cantidad de registros de mamíferos en Costa Rica por año"</span>,
+  <span class='va'>registros_agrupados_x_orden</span><span class='op'>$</span><span class='va'>n</span>, 
+  names.arg <span class='op'>=</span> <span class='va'>registros_agrupados_x_orden</span><span class='op'>$</span><span class='va'>order</span>,
+  main <span class='op'>=</span> <span class='st'>"Cantidad de registros por orden taxonómico de mamíferos"</span>,
 <span class='op'>)</span>
 </code></pre>
 </div>
 <img src="02-r-graficacion-barras_files/figure-html5/unnamed-chunk-5-1.png" width="624" />
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Gráfico de barras horizontales</span>
+<span class='fu'><a href='https://rdrr.io/r/graphics/par.html'>par</a></span><span class='op'>(</span>mai<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>1</span>, <span class='fl'>1</span><span class='op'>)</span><span class='op'>)</span>
 <span class='fu'><a href='https://rdrr.io/r/graphics/barplot.html'>barplot</a></span><span class='op'>(</span>
-  <span class='va'>registros_agrupados_x_anyo</span><span class='op'>$</span><span class='va'>n</span>, 
-  names.arg <span class='op'>=</span> <span class='va'>registros_agrupados_x_anyo</span><span class='op'>$</span><span class='va'>year</span>,
-  main <span class='op'>=</span> <span class='st'>"Cantidad de registros de mamíferos en Costa Rica por año"</span>,
+  <span class='va'>registros_agrupados_x_orden</span><span class='op'>$</span><span class='va'>n</span>, 
+  names.arg <span class='op'>=</span> <span class='va'>registros_agrupados_x_orden</span><span class='op'>$</span><span class='va'>order</span>,
+  main <span class='op'>=</span> <span class='st'>"Cantidad de registros por orden taxonómico de mamíferos"</span>,
   horiz <span class='op'>=</span> <span class='cn'>TRUE</span>,
   las<span class='op'>=</span><span class='fl'>1</span>
 <span class='op'>)</span>
@@ -2542,31 +2560,84 @@ En los siguientes ejemplos y ejercicios, se utilizará un conjunto de registros 
 </div>
 <p><img src="02-r-graficacion-barras_files/figure-html5/unnamed-chunk-5-2.png" width="624" /></p>
 </div>
-<p><strong>Registros por orden taxonómico</strong></p>
+<p><strong>Cantidad de registros de carnívoros por familia taxonómica</strong></p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Gráfico de barras verticales</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Generación de un nuevo data frame</span>
+<span class='va'>registros_carnivora_agrupados_x_familia</span> <span class='op'>&lt;-</span>
+  <span class='va'>registros_mammalia_cr</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>order</span> <span class='op'>==</span> <span class='st'>"Carnivora"</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/count.html'>count</a></span><span class='op'>(</span><span class='va'>family</span><span class='op'>)</span>
+
+<span class='co'># Gráfico de barras horizontales</span>
+<span class='fu'><a href='https://rdrr.io/r/graphics/par.html'>par</a></span><span class='op'>(</span>mai<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>1</span>, <span class='fl'>1</span><span class='op'>)</span><span class='op'>)</span>
 <span class='fu'><a href='https://rdrr.io/r/graphics/barplot.html'>barplot</a></span><span class='op'>(</span>
-  <span class='va'>registros_agrupados_x_orden</span><span class='op'>$</span><span class='va'>n</span>, 
-  names.arg <span class='op'>=</span> <span class='va'>registros_agrupados_x_orden</span><span class='op'>$</span><span class='va'>order</span>,
-  main <span class='op'>=</span> <span class='st'>"Cantidad de registros de mamíferos en Costa Rica por orden taxonómico"</span>,
-<span class='op'>)</span>
-</code></pre>
-</div>
-<img src="02-r-graficacion-barras_files/figure-html5/unnamed-chunk-6-1.png" width="624" />
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Gráfico de barras horizontales</span>
-<span class='fu'><a href='https://rdrr.io/r/graphics/par.html'>par</a></span><span class='op'>(</span>mai<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>1</span><span class='op'>)</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/graphics/barplot.html'>barplot</a></span><span class='op'>(</span>
-  <span class='va'>registros_agrupados_x_orden</span><span class='op'>$</span><span class='va'>n</span>, 
-  names.arg <span class='op'>=</span> <span class='va'>registros_agrupados_x_orden</span><span class='op'>$</span><span class='va'>order</span>,
-  main <span class='op'>=</span> <span class='st'>"Cantidad de registros de mamíferos en Costa Rica por orden taxonómico"</span>,
+  <span class='va'>registros_carnivora_agrupados_x_familia</span><span class='op'>$</span><span class='va'>n</span>, 
+  names.arg <span class='op'>=</span> <span class='va'>registros_carnivora_agrupados_x_familia</span><span class='op'>$</span><span class='va'>family</span>,
+  main <span class='op'>=</span> <span class='st'>"Cantidad de registros por familia de carnívoros"</span>,
   horiz <span class='op'>=</span> <span class='cn'>TRUE</span>,
   las<span class='op'>=</span><span class='fl'>1</span>
 <span class='op'>)</span>
 </code></pre>
 </div>
-<p><img src="02-r-graficacion-barras_files/figure-html5/unnamed-chunk-6-2.png" width="624" /></p>
+<p><img src="02-r-graficacion-barras_files/figure-html5/unnamed-chunk-6-1.png" width="624" /></p>
+</div>
+<p><strong>Cantidad de registros de felinos por especie</strong></p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Generación de un nuevo data frame</span>
+<span class='va'>registros_felidae_agrupados_x_especie</span> <span class='op'>&lt;-</span>
+  <span class='va'>registros_mammalia_cr</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>family</span> <span class='op'>==</span> <span class='st'>"Felidae"</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/count.html'>count</a></span><span class='op'>(</span><span class='va'>species</span><span class='op'>)</span>
+
+<span class='co'># Gráfico de barras horizontales</span>
+<span class='fu'><a href='https://rdrr.io/r/graphics/par.html'>par</a></span><span class='op'>(</span>mai<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>1</span>, <span class='fl'>1</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/graphics/barplot.html'>barplot</a></span><span class='op'>(</span>
+  <span class='va'>registros_felidae_agrupados_x_especie</span><span class='op'>$</span><span class='va'>n</span>, 
+  names.arg <span class='op'>=</span> <span class='va'>registros_felidae_agrupados_x_especie</span><span class='op'>$</span><span class='va'>species</span>,
+  main <span class='op'>=</span> <span class='st'>"Cantidad de registros por especie de felinos"</span>,
+  horiz <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  las<span class='op'>=</span><span class='fl'>1</span>
+<span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="02-r-graficacion-barras_files/figure-html5/unnamed-chunk-7-1.png" width="624" /></p>
+</div>
+<p><strong>Ejercicio: haga un gráfico de barras que muestre la cantidad de registros por especie de felinos o de caninos.</strong></p>
+<h3 id="barras-agrupadas">Barras agrupadas</h3>
+<p><strong>Cantidad de registros de felinos por especie y tipo de registro (<em>basis or record</em>)</strong></p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Generación de un nuevo data frame</span>
+<span class='va'>registros_felidae_agrupados_x_especie_tiporegistro</span> <span class='op'>&lt;-</span>
+  <span class='va'>registros_mammalia_cr</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>family</span> <span class='op'>==</span> <span class='st'>"Felidae"</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/count.html'>count</a></span><span class='op'>(</span><span class='va'>species</span>, <span class='va'>basisOfRecord</span><span class='op'>)</span>
+
+<span class='co'># Gráfico de barras apiladas</span>
+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>
+  <span class='va'>registros_felidae_agrupados_x_especie_tiporegistro</span>, 
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>species</span>, y <span class='op'>=</span> <span class='va'>n</span>, fill <span class='op'>=</span> <span class='va'>basisOfRecord</span><span class='op'>)</span>
+<span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_bar.html'>geom_col</a></span><span class='op'>(</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="02-r-graficacion-barras_files/figure-html5/unnamed-chunk-8-1.png" width="624" /></p>
+</div>
+<h3 id="barras-agrupadas-1">Barras agrupadas</h3>
+<p><strong>Cantidad de registros de felinos por especie y tipo de registro (<em>basis or record</em>)</strong></p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Gráfico de barras apiladas</span>
+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>
+  <span class='va'>registros_felidae_agrupados_x_especie_tiporegistro</span>, 
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>species</span>, y <span class='op'>=</span> <span class='va'>n</span>, fill <span class='op'>=</span> <span class='va'>basisOfRecord</span><span class='op'>)</span>
+<span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_bar.html'>geom_col</a></span><span class='op'>(</span>position <span class='op'>=</span> <span class='st'>"dodge"</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="02-r-graficacion-barras_files/figure-html5/unnamed-chunk-9-1.png" width="624" /></p>
 </div>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->

@@ -14,18 +14,13 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Carga de paquetes
 
-
 ```{r message = FALSE}
 # Carga de ggplot2
 library(ggplot2)
 
-# Carga de plotly
-library(plotly)
-
 # Carga de dplyr
 library(dplyr)
 ```
-
 
 ## Conjuntos de datos utilizados
 
@@ -46,64 +41,131 @@ registros_mammalia_cr <-
 View(registros_mammalia_cr)
 ```
 
-## Procesamiento
+## Paquete base
+
+### Barras simples
+
+**Cantidad de registros por año**
 
 ```{r}
-# Cantidad de registros por año de observación/recolección
+# Generación de un nuevo data frame
 registros_agrupados_x_anyo <-
   registros_mammalia_cr %>%
   dplyr::count(year)
 
-# Cantidad de registros por orden taxonómico
+# Gráfico de barras verticales
+barplot(
+  registros_agrupados_x_anyo$n, 
+  names.arg = registros_agrupados_x_anyo$year,
+  main = "Cantidad de registros de mamíferos por año",
+)
+
+# Gráfico de barras horizontales
+barplot(
+  registros_agrupados_x_anyo$n, 
+  names.arg = registros_agrupados_x_anyo$year,
+  main = "Cantidad de registros de mamíferos por año",
+  horiz = TRUE,
+  las=1
+)
+```
+
+**Cantidad de registros por orden taxonómico**
+
+```{r}
+# Generación de un nuevo data frame
 registros_agrupados_x_orden <-
   registros_mammalia_cr %>%
   dplyr::count(order)
 
-# Cantidad de registros por orden y familia
-registros_agrupados_x_orden_family <-
+# Gráfico de barras verticales
+barplot(
+  registros_agrupados_x_orden$n, 
+  names.arg = registros_agrupados_x_orden$order,
+  main = "Cantidad de registros por orden taxonómico de mamíferos",
+)
+
+# Gráfico de barras horizontales
+par(mai=c(1, 2, 1, 1))
+barplot(
+  registros_agrupados_x_orden$n, 
+  names.arg = registros_agrupados_x_orden$order,
+  main = "Cantidad de registros por orden taxonómico de mamíferos",
+  horiz = TRUE,
+  las=1
+)
+```
+
+**Cantidad de registros de carnívoros por familia taxonómica**
+
+```{r}
+# Generación de un nuevo data frame
+registros_carnivora_agrupados_x_familia <-
   registros_mammalia_cr %>%
-  dplyr::count(order, family)
-```
-
-## Paquete base
-
-**Registros por año**
-
-```{r}
-# Gráfico de barras verticales
-barplot(
-  registros_agrupados_x_anyo$n, 
-  names.arg = registros_agrupados_x_anyo$year,
-  main = "Cantidad de registros de mamíferos en Costa Rica por año",
-)
+  filter(order == "Carnivora") %>%
+  dplyr::count(family)
 
 # Gráfico de barras horizontales
+par(mai=c(1, 2, 1, 1))
 barplot(
-  registros_agrupados_x_anyo$n, 
-  names.arg = registros_agrupados_x_anyo$year,
-  main = "Cantidad de registros de mamíferos en Costa Rica por año",
+  registros_carnivora_agrupados_x_familia$n, 
+  names.arg = registros_carnivora_agrupados_x_familia$family,
+  main = "Cantidad de registros por familia de carnívoros",
   horiz = TRUE,
   las=1
 )
 ```
 
-**Registros por orden taxonómico**
+**Cantidad de registros de felinos por especie**
 
 ```{r}
-# Gráfico de barras verticales
-barplot(
-  registros_agrupados_x_orden$n, 
-  names.arg = registros_agrupados_x_orden$order,
-  main = "Cantidad de registros de mamíferos en Costa Rica por orden taxonómico",
-)
+# Generación de un nuevo data frame
+registros_felidae_agrupados_x_especie <-
+  registros_mammalia_cr %>%
+  filter(family == "Felidae") %>%
+  dplyr::count(species)
 
 # Gráfico de barras horizontales
-par(mai=c(1, 1, 1, 1))
+par(mai=c(1, 2, 1, 1))
 barplot(
-  registros_agrupados_x_orden$n, 
-  names.arg = registros_agrupados_x_orden$order,
-  main = "Cantidad de registros de mamíferos en Costa Rica por orden taxonómico",
+  registros_felidae_agrupados_x_especie$n, 
+  names.arg = registros_felidae_agrupados_x_especie$species,
+  main = "Cantidad de registros por especie de felinos",
   horiz = TRUE,
   las=1
 )
+```
+
+**Ejercicio: haga un gráfico de barras que muestre la cantidad de registros por especie de felinos o de caninos.**
+
+### Barras agrupadas
+
+**Cantidad de registros de felinos por especie y tipo de registro (*basis or record*)**
+
+```{r}
+# Generación de un nuevo data frame
+registros_felidae_agrupados_x_especie_tiporegistro <-
+  registros_mammalia_cr %>%
+  filter(family == "Felidae") %>%
+  dplyr::count(species, basisOfRecord)
+
+# Gráfico de barras apiladas
+ggplot(
+  registros_felidae_agrupados_x_especie_tiporegistro, 
+  aes(x = species, y = n, fill = basisOfRecord)
+) +
+  geom_col()
+```
+
+### Barras agrupadas
+
+**Cantidad de registros de felinos por especie y tipo de registro (*basis or record*)**
+
+```{r}
+# Gráfico de barras apiladas
+ggplot(
+  registros_felidae_agrupados_x_especie_tiporegistro, 
+  aes(x = species, y = n, fill = basisOfRecord)
+) +
+  geom_col(position = "dodge")
 ```
