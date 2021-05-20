@@ -2457,8 +2457,11 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <li><a href="#paquete-base">Paquete base</a>
 <ul>
 <li><a href="#barras-simples">Barras simples</a></li>
+</ul></li>
+<li><a href="#ggplot2">ggplot2</a>
+<ul>
+<li><a href="#barras-apiladas">Barras apiladas</a></li>
 <li><a href="#barras-agrupadas">Barras agrupadas</a></li>
-<li><a href="#barras-agrupadas-1">Barras agrupadas</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -2604,8 +2607,10 @@ En los siguientes ejemplos y ejercicios, se utilizará un conjunto de registros 
 </div>
 <p><img src="02-r-graficacion-barras_files/figure-html5/unnamed-chunk-7-1.png" width="624" /></p>
 </div>
-<p><strong>Ejercicio: haga un gráfico de barras que muestre la cantidad de registros por especie de felinos o de caninos.</strong></p>
-<h3 id="barras-agrupadas">Barras agrupadas</h3>
+<p><strong>Ejercicio:<br />
+Haga un gráfico de barras que muestre la cantidad de registros por especie de felinos o de caninos.</strong></p>
+<h2 id="ggplot2">ggplot2</h2>
+<h3 id="barras-apiladas">Barras apiladas</h3>
 <p><strong>Cantidad de registros de felinos por especie y tipo de registro (<em>basis or record</em>)</strong></p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
@@ -2620,12 +2625,13 @@ En los siguientes ejemplos y ejercicios, se utilizará un conjunto de registros 
   <span class='va'>registros_felidae_agrupados_x_especie_tiporegistro</span>, 
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>species</span>, y <span class='op'>=</span> <span class='va'>n</span>, fill <span class='op'>=</span> <span class='va'>basisOfRecord</span><span class='op'>)</span>
 <span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_bar.html'>geom_col</a></span><span class='op'>(</span><span class='op'>)</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_bar.html'>geom_col</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/coord_flip.html'>coord_flip</a></span><span class='op'>(</span><span class='op'>)</span>
 </code></pre>
 </div>
 <p><img src="02-r-graficacion-barras_files/figure-html5/unnamed-chunk-8-1.png" width="624" /></p>
 </div>
-<h3 id="barras-agrupadas-1">Barras agrupadas</h3>
+<h3 id="barras-agrupadas">Barras agrupadas</h3>
 <p><strong>Cantidad de registros de felinos por especie y tipo de registro (<em>basis or record</em>)</strong></p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
@@ -2634,11 +2640,17 @@ En los siguientes ejemplos y ejercicios, se utilizará un conjunto de registros 
   <span class='va'>registros_felidae_agrupados_x_especie_tiporegistro</span>, 
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>species</span>, y <span class='op'>=</span> <span class='va'>n</span>, fill <span class='op'>=</span> <span class='va'>basisOfRecord</span><span class='op'>)</span>
 <span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_bar.html'>geom_col</a></span><span class='op'>(</span>position <span class='op'>=</span> <span class='st'>"dodge"</span><span class='op'>)</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_bar.html'>geom_col</a></span><span class='op'>(</span>position <span class='op'>=</span> <span class='st'>"dodge"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/coord_flip.html'>coord_flip</a></span><span class='op'>(</span><span class='op'>)</span>
 </code></pre>
 </div>
 <p><img src="02-r-graficacion-barras_files/figure-html5/unnamed-chunk-9-1.png" width="624" /></p>
 </div>
+<p><strong>Ejercicio:<br />
+Para los dos últimos gráficos:<br />
+- Ordene las barras por tamaño, de mayor a menor.<br />
+- Coloque las etiquetas de cantidades (n) al final de cada barra.<br />
+- Agregue títulos para los gráficos y para los ejes x e y.</strong></p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->

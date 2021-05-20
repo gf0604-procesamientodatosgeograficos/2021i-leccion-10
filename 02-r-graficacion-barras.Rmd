@@ -136,9 +136,12 @@ barplot(
 )
 ```
 
-**Ejercicio: haga un gráfico de barras que muestre la cantidad de registros por especie de felinos o de caninos.**
+**Ejercicio:  
+Haga un gráfico de barras que muestre la cantidad de registros por especie de felinos o de caninos.**
 
-### Barras agrupadas
+## ggplot2
+
+### Barras apiladas
 
 **Cantidad de registros de felinos por especie y tipo de registro (*basis or record*)**
 
@@ -154,7 +157,8 @@ ggplot(
   registros_felidae_agrupados_x_especie_tiporegistro, 
   aes(x = species, y = n, fill = basisOfRecord)
 ) +
-  geom_col()
+  geom_col() +
+  coord_flip()
 ```
 
 ### Barras agrupadas
@@ -167,5 +171,12 @@ ggplot(
   registros_felidae_agrupados_x_especie_tiporegistro, 
   aes(x = species, y = n, fill = basisOfRecord)
 ) +
-  geom_col(position = "dodge")
+  geom_col(position = "dodge") +
+  coord_flip()
 ```
+
+**Ejercicio:  
+Para los dos últimos gráficos:  
+- Ordene las barras por tamaño, de mayor a menor.  
+- Coloque las etiquetas de cantidades (n) al final de cada barra.  
+- Agregue títulos para los gráficos y para los ejes x e y.**
