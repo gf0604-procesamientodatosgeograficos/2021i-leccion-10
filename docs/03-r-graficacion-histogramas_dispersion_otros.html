@@ -86,34 +86,27 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </style>
 
   <!--radix_placeholder_meta_tags-->
-  <title>GF0604 Procesamiento de datos geograficos 2021-I. Lecciones 10 y 12: Untitled</title>
+  <title>GF0604 Procesamiento de datos geograficos 2021-I. Lecciones 10, 12 y 14: Graficación con R - histogramas, gráficos de densidad, dispersión y otros</title>
 
-  <meta property="description" itemprop="description" content="A new article created using the Distill format."/>
 
   <link rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/"/>
 
-  <!--  https://schema.org/Article -->
-  <meta property="article:published" itemprop="datePublished" content="2021-05-19"/>
-  <meta property="article:created" itemprop="dateCreated" content="2021-05-19"/>
-  <meta name="article:author" content="Nora Jones"/>
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="GF0604 Procesamiento de datos geograficos 2021-I. Lecciones 10 y 12: Untitled"/>
+  <meta property="og:title" content="GF0604 Procesamiento de datos geograficos 2021-I. Lecciones 10, 12 y 14: Graficación con R - histogramas, gráficos de densidad, dispersión y otros"/>
   <meta property="og:type" content="article"/>
-  <meta property="og:description" content="A new article created using the Distill format."/>
   <meta property="og:locale" content="en_US"/>
-  <meta property="og:site_name" content="GF0604 Procesamiento de datos geograficos 2021-I. Lecciones 10 y 12"/>
+  <meta property="og:site_name" content="GF0604 Procesamiento de datos geograficos 2021-I. Lecciones 10, 12 y 14"/>
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="GF0604 Procesamiento de datos geograficos 2021-I. Lecciones 10 y 12: Untitled"/>
-  <meta property="twitter:description" content="A new article created using the Distill format."/>
+  <meta property="twitter:title" content="GF0604 Procesamiento de datos geograficos 2021-I. Lecciones 10, 12 y 14: Graficación con R - histogramas, gráficos de densidad, dispersión y otros"/>
 
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output"]}},"value":[{"type":"character","attributes":{},"value":["Untitled"]},{"type":"character","attributes":{},"value":["A new article created using the Distill format.\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url","affiliation","affiliation_url"]}},"value":[{"type":"character","attributes":{},"value":["Nora Jones"]},{"type":"character","attributes":{},"value":["https://example.com/norajones"]},{"type":"character","attributes":{},"value":["Spacely Sprockets"]},{"type":"character","attributes":{},"value":["https://example.com/spacelysprokets"]}]}]},{"type":"character","attributes":{},"value":["2021-05-19"]},{"type":"character","attributes":{},"value":["distill::distill_article"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","output"]}},"value":[{"type":"character","attributes":{},"value":["Graficación con R - histogramas, gráficos de densidad, dispersión y otros"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","toc_depth"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"integer","attributes":{},"value":[4]}]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -2413,7 +2406,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Untitled","description":"A new article created using the Distill format.","authors":[{"author":"Nora Jones","authorURL":"https://example.com/norajones","affiliation":"Spacely Sprockets","affiliationURL":"https://example.com/spacelysprokets","orcidID":""}],"publishedDate":"2021-05-19T00:00:00.000-06:00","citationText":"Jones, 2021"}
+{"title":"Graficación con R - histogramas, gráficos de densidad, dispersión y otros","authors":[]}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2421,7 +2414,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <header class="header header--fixed" role="banner">
 <nav class="distill-site-nav distill-site-header">
 <div class="nav-left">
-<a href="index.html" class="title">GF0604 Procesamiento de datos geograficos 2021-I. Lecciones 10 y 12</a>
+<a href="index.html" class="title">GF0604 Procesamiento de datos geograficos 2021-I. Lecciones 10, 12 y 14</a>
 <a href="https://github.com/gf0604-procesamientodatosgeograficos/2021i-leccion-10/">
 <i class="fab fa-github" aria-hidden="true"></i>
 </a>
@@ -2445,22 +2438,223 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--/radix_placeholder_site_before_body-->
 
 <div class="d-title">
-<h1>Untitled</h1>
+<h1>Graficación con R - histogramas, gráficos de densidad, dispersión y otros</h1>
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
-<p><p>A new article created using the Distill format.</p></p>
+
 </div>
 
-<div class="d-byline">
-  Nora Jones <a href="https://example.com/norajones" class="uri">https://example.com/norajones</a> (Spacely Sprockets)<a href="https://example.com/spacelysprokets" class="uri">https://example.com/spacelysprokets</a>
-  
-<br/>2021-05-19
-</div>
 
 <div class="d-article">
-<p>Distill is a publication format for scientific and technical writing, native to the web.</p>
-<p>Learn more about using Distill for R Markdown at <a href="https://rstudio.github.io/distill" class="uri">https://rstudio.github.io/distill</a>.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="d-contents d-contents-float">
+<nav class="l-text toc figcaption" id="TOC">
+<h3>Contents</h3>
+<ul>
+<li><a href="#preparativos">Preparativos</a>
+<ul>
+<li><a href="#carga-de-paquetes">Carga de paquetes</a></li>
+<li><a href="#conjuntos-de-datos-utilizados">Conjuntos de datos utilizados</a></li>
+</ul></li>
+<li><a href="#análisis-de-datos-de-lst-ndvi-y-ndbi-de-la-gam">Análisis de datos de LST, NDVI y NDBI de la GAM</a>
+<ul>
+<li><a href="#despliegue-de-los-datos-tabulares">Despliegue de los datos tabulares</a></li>
+<li><a href="#histogramas">Histogramas</a></li>
+<li><a href="#gráficos-de-densidad">Gráficos de densidad</a></li>
+<li><a href="#gráficos-de-lollipops">Gráficos de <em>lollipops</em></a></li>
+<li><a href="#gráficos-de-dispersión">Gráficos de dispersión</a></li>
+</ul></li>
+</ul>
+</nav>
+</div>
+<h1 id="preparativos">Preparativos</h1>
+<h2 id="carga-de-paquetes">Carga de paquetes</h2>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Carga de dplyr</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span>
+
+<span class='co'># Carga de ggplot2</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://ggplot2.tidyverse.org'>ggplot2</a></span><span class='op'>)</span>
+
+<span class='co'># Carga de hrbrthemes (temas adicionales para ggplot2)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://github.com/hrbrmstr/hrbrthemes'>hrbrthemes</a></span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<h2 id="conjuntos-de-datos-utilizados">Conjuntos de datos utilizados</h2>
+<p><strong>Promedios de LST, NDVI y NDBI de los cantones de la GAM</strong><br />
+Este conjunto de datos forma parte del <a href="https://www.atlasverde.org/">Atlas de Servicios Ecosistémicos de la Gran Área Metropolitana (GAM)</a>. Para cada uno de los 31 cantones de la GAM se incluyen los promedios de:</p>
+<ul>
+<li><a href="https://land.copernicus.eu/global/products/lst">LST (<em>Land Surface Temperature</em>, Temperatura superficial del suelo)</a><br />
+</li>
+<li><a href="https://es.wikipedia.org/wiki/%C3%8Dndice_de_vegetaci%C3%B3n_de_diferencia_normalizada">NDVI (<em>Normalized Difference Vegetation Index</em>, Índice de vegetación de diferencia normalizada)</a><br />
+</li>
+<li><a href="http://www.gisandbeers.com/calculo-indice-ndbi-analisis-urbanisticos/">NDBI (<em>Normalized Difference Built-up Index</em>, Índice de edificaciones de diferencia normalizada)</a></li>
+</ul>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Carga de datos desde un archivo CSV</span>
+<span class='va'>lst_ndvi_ndbi</span> <span class='op'>&lt;-</span>
+  <span class='fu'><a href='https://rdrr.io/r/utils/read.table.html'>read.csv</a></span><span class='op'>(</span>file <span class='op'>=</span> <span class='st'>'https://raw.githubusercontent.com/gf0604-procesamientodatosgeograficos/2021i-datos/main/atlasverde/lst-ndvi-ndbi/lst_ndvi_ndbi-cantones_gam.csv'</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<h1 id="análisis-de-datos-de-lst-ndvi-y-ndbi-de-la-gam">Análisis de datos de LST, NDVI y NDBI de la GAM</h1>
+<h2 id="despliegue-de-los-datos-tabulares">Despliegue de los datos tabulares</h2>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Estructura del conjunto de datos</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span><span class='op'>(</span><span class='va'>lst_ndvi_ndbi</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>&#39;data.frame&#39;:   31 obs. of  4 variables:
+ $ canton       : chr  &quot;Alajuela&quot; &quot;Alajuelita&quot; &quot;Alvarado&quot; &quot;AserrÃ­&quot; ...
+ $ lst_promedio : num  42.1 38.1 33.5 35.8 41.4 ...
+ $ ndvi_promedio: num  0.526 0.548 0.6 0.623 0.591 ...
+ $ ndbi_promedio: num  -0.197 -0.222 -0.256 -0.261 -0.224 ...</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Primeros registros</span>
+<span class='fu'><a href='https://dplyr.tidyverse.org/reference/slice.html'>slice_head</a></span><span class='op'>(</span><span class='va'>lst_ndvi_ndbi</span>, n <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>      canton lst_promedio ndvi_promedio ndbi_promedio
+1   Alajuela     42.11327     0.5258936    -0.1971417
+2 Alajuelita     38.06614     0.5478143    -0.2222383
+3   Alvarado     33.47862     0.6002681    -0.2558038
+4    AserrÃ­     35.79543     0.6230744    -0.2607592
+5     Atenas     41.35840     0.5913761    -0.2237017</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Últimos registros</span>
+<span class='fu'><a href='https://dplyr.tidyverse.org/reference/slice.html'>slice_tail</a></span><span class='op'>(</span><span class='va'>lst_ndvi_ndbi</span>, n <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>                canton lst_promedio ndvi_promedio ndbi_promedio
+1            Santa Ana     39.28124     0.5408581   -0.22599949
+2        Santa Barbara     36.30114     0.6548259   -0.30456919
+3        Santo Domingo     41.00884     0.4996296   -0.19275645
+4               TibÃ¡s     43.98472     0.2372620   -0.05957896
+5 VÃ¡zquez de Coronado     30.34446     0.5450616   -0.25486747</code></pre>
+</div>
+<h2 id="histogramas">Histogramas</h2>
+<p>Un <a href="https://www.data-to-viz.com/graph/histogram.html">histograma</a> es una representación gráfica de la distribución de una variable numérica en forma de barras (<em>bins</em>). La altura de cada barra representa la frecuencia de un rango de valores de la variable.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Histograma de LST</span>
+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>lst_ndvi_ndbi</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>lst_promedio</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_histogram.html'>geom_histogram</a></span><span class='op'>(</span>binwidth <span class='op'>=</span> <span class='fl'>2</span>,
+                 color <span class='op'>=</span> <span class='st'>"red"</span>,
+                 fill <span class='op'>=</span> <span class='st'>"white"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>ggtitle</a></span><span class='op'>(</span><span class='st'>"Distribución de LST en la GAM"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>xlab</a></span><span class='op'>(</span><span class='st'>"LST"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>ylab</a></span><span class='op'>(</span><span class='st'>"Frecuencia"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://rdrr.io/pkg/hrbrthemes/man/theme_ipsum.html'>theme_ipsum</a></span><span class='op'>(</span><span class='op'>)</span>
+</code></pre>
+</div>
+<img src="03-r-graficacion-histogramas_dispersion_otros_files/figure-html5/unnamed-chunk-4-1.png" width="624" />
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Histograma de NDVI</span>
+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>lst_ndvi_ndbi</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_histogram.html'>geom_histogram</a></span><span class='op'>(</span>
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>ndvi_promedio</span><span class='op'>)</span>,
+    binwidth <span class='op'>=</span> <span class='fl'>0.1</span>,
+    color <span class='op'>=</span> <span class='st'>"green"</span>,
+    fill <span class='op'>=</span> <span class='st'>"white"</span>
+  <span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>ggtitle</a></span><span class='op'>(</span><span class='st'>"Distribución de NDVI en la GAM"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>xlab</a></span><span class='op'>(</span><span class='st'>"NDVI"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>ylab</a></span><span class='op'>(</span><span class='st'>"Frecuencia"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://rdrr.io/pkg/hrbrthemes/man/theme_ipsum.html'>theme_ipsum</a></span><span class='op'>(</span><span class='op'>)</span>
+</code></pre>
+</div>
+<img src="03-r-graficacion-histogramas_dispersion_otros_files/figure-html5/unnamed-chunk-4-2.png" width="624" />
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Histograma de NDBI</span>
+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>lst_ndvi_ndbi</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_histogram.html'>geom_histogram</a></span><span class='op'>(</span>
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>ndbi_promedio</span><span class='op'>)</span>,
+    binwidth <span class='op'>=</span> <span class='fl'>0.05</span>,
+    color <span class='op'>=</span> <span class='st'>"black"</span>,
+    fill <span class='op'>=</span> <span class='st'>"white"</span>
+  <span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>ggtitle</a></span><span class='op'>(</span><span class='st'>"Distribución de NDBI en la GAM"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>xlab</a></span><span class='op'>(</span><span class='st'>"NDBI"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>ylab</a></span><span class='op'>(</span><span class='st'>"Frecuencia"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://rdrr.io/pkg/hrbrthemes/man/theme_ipsum.html'>theme_ipsum</a></span><span class='op'>(</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="03-r-graficacion-histogramas_dispersion_otros_files/figure-html5/unnamed-chunk-4-3.png" width="624" /></p>
+</div>
+<p><strong>Ejercicio: grafique las variables de NDVI y NDBI en un mismo histograma.</strong></p>
+<h2 id="gráficos-de-densidad">Gráficos de densidad</h2>
+<p>Un <a href="https://www.data-to-viz.com/graph/density.html">gráfico de densidad</a> representa mediante una curva la distribución de una variable numérica. Utiliza una estimación de densidad de kernel para mostrar la función de densidad de probabilidad de una variable.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Gráfico de densidad de NDVI</span>
+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>lst_ndvi_ndbi</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_density.html'>geom_density</a></span><span class='op'>(</span>
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>ndvi_promedio</span><span class='op'>)</span>,
+    color <span class='op'>=</span> <span class='st'>"black"</span>,
+    fill <span class='op'>=</span> <span class='st'>"green"</span>,
+    alpha <span class='op'>=</span> <span class='fl'>0.4</span>
+  <span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>ggtitle</a></span><span class='op'>(</span><span class='st'>"Distribución de NDVI en la GAM"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>xlab</a></span><span class='op'>(</span><span class='st'>"NDVI"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>ylab</a></span><span class='op'>(</span><span class='st'>"Densidad"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://rdrr.io/pkg/hrbrthemes/man/theme_ipsum.html'>theme_ipsum</a></span><span class='op'>(</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="03-r-graficacion-histogramas_dispersion_otros_files/figure-html5/unnamed-chunk-5-1.png" width="624" /></p>
+</div>
+<p><strong>Ejercicio: agregue un histograma al gráfico de densidad de NDVI.</strong></p>
+<h2 id="gráficos-de-lollipops">Gráficos de <em>lollipops</em></h2>
+<p>Un <a href="https://www.data-to-viz.com/graph/lollipop.html">gráfico de <em>lollipop</em></a> es similar a un gráfico de barras, en el cual las barras se transforman en líneas que finalizan en un círculo. Muestran la relación entre una variable categórica y una variable numérica.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Gráfico de lollipop que muestra el promedio de NDVI en cada cantón de la GAM</span>
+<span class='va'>lst_ndvi_ndbi</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/arrange.html'>arrange</a></span><span class='op'>(</span><span class='va'>ndvi_promedio</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>canton <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>canton</span>, <span class='va'>canton</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>canton</span>, y <span class='op'>=</span> <span class='va'>ndvi_promedio</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_segment.html'>geom_segment</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>
+    x <span class='op'>=</span> <span class='va'>canton</span>,
+    xend <span class='op'>=</span> <span class='va'>canton</span>,
+    y <span class='op'>=</span> <span class='fl'>0</span>,
+    yend <span class='op'>=</span> <span class='va'>ndvi_promedio</span>
+  <span class='op'>)</span>, color <span class='op'>=</span> <span class='st'>"grey"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span>size <span class='op'>=</span> <span class='fl'>3</span>, color <span class='op'>=</span> <span class='st'>"#69b3a2"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/coord_flip.html'>coord_flip</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://rdrr.io/pkg/hrbrthemes/man/theme_ipsum.html'>theme_ipsum</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>ggtitle</a></span><span class='op'>(</span><span class='st'>"Promedio de NDVI en cantones de la GAM"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>xlab</a></span><span class='op'>(</span><span class='st'>"Cantón"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>ylab</a></span><span class='op'>(</span><span class='st'>"NDVI"</span><span class='op'>)</span> <span class='op'>+</span>  
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/theme.html'>theme</a></span><span class='op'>(</span>
+    text <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/element.html'>element_text</a></span><span class='op'>(</span>size <span class='op'>=</span> <span class='fl'>8</span><span class='op'>)</span>,
+    panel.grid.minor.y <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/element.html'>element_blank</a></span><span class='op'>(</span><span class='op'>)</span>,
+    panel.grid.major.y <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/element.html'>element_blank</a></span><span class='op'>(</span><span class='op'>)</span>,
+    legend.position <span class='op'>=</span> <span class='st'>"none"</span>
+  <span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="03-r-graficacion-histogramas_dispersion_otros_files/figure-html5/unnamed-chunk-6-1.png" width="624" /></p>
+</div>
+<h2 id="gráficos-de-dispersión">Gráficos de dispersión</h2>
+<p>Un <a href="https://www.data-to-viz.com/graph/scatter.html">gráfico de dispersión (<em>scatterplot</em>)</a> muestra la relación entre dos variables numéricas. Para cada punto de datos, el valor de una variable es representado en el eje x y el valor de la otra variable en el eje y.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Gráfico de dispersión de NDVI y LST</span>
+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>lst_ndvi_ndbi</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>ndvi_promedio</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span>
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>y <span class='op'>=</span> <span class='va'>lst_promedio</span><span class='op'>)</span>
+  <span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>ggtitle</a></span><span class='op'>(</span><span class='st'>"Relación entre NDVI y LST en la GAM"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>xlab</a></span><span class='op'>(</span><span class='st'>"NDVI"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>ylab</a></span><span class='op'>(</span><span class='st'>"LST"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://rdrr.io/pkg/hrbrthemes/man/theme_ipsum.html'>theme_ipsum</a></span><span class='op'>(</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="03-r-graficacion-histogramas_dispersion_otros_files/figure-html5/unnamed-chunk-7-1.png" width="624" /></p>
+</div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

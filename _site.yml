@@ -1,7 +1,7 @@
 name: "gf0604-procesamientodatosgeograficos-2021i-leccion-10"
-title: "GF0604 Procesamiento de datos geograficos 2021-I. Lecciones 10 y 12"
+title: "GF0604 Procesamiento de datos geograficos 2021-I. Lecciones 10, 12 y 14"
 description: |
-  Curso GF0604 Procesamiento de datos geográficos. Escuela de Geografía, Universidad de Costa Rica. Primer ciclo lectivo 2021. Lecciones 10 y 12.
+  Curso GF0604 Procesamiento de datos geográficos. Escuela de Geografía, Universidad de Costa Rica. Primer ciclo lectivo 2021. Lecciones 10, 12 y 14.
 output_dir: "docs"
 theme: theme.css
 navbar:
