@@ -165,9 +165,9 @@ ggplot(lst_ndvi_ndbi, aes(x = ndvi_promedio)) +
   theme_ipsum()
 ```
 
-# Otros
+## Otros
 
-## Gráfico de doble eje
+### Gráfico de doble eje
 
 ```{r}
 library(plotly)
@@ -213,7 +213,7 @@ plot_ly(
   config(locale = "es")
 ```
 
-## Mapa
+### Mapa
 
 ```{r}
 #-------------------- Paquetes --------------------
