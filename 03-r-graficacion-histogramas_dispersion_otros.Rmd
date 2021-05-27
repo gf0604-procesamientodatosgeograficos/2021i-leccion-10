@@ -147,6 +147,9 @@ lst_ndvi_ndbi %>%
   )
 ```
 
+**Ejercicio: genere un gráfico de *lollipop* que muestre el LST promedio en cada cantón.**  
+**Ejercicio: genere un gráfico de *lollipop* que muestre conjuntamente el NDVI promedio y el NDBI promedio en cada cantón.**  
+
 ## Gráficos de dispersión
 Un [gráfico de dispersión (*scatterplot*)](https://www.data-to-viz.com/graph/scatter.html) muestra la relación entre dos variables numéricas. Para cada punto de datos, el valor de una variable es representado en el eje x y el valor de la otra variable en el eje y.
 
@@ -170,9 +173,11 @@ ggplot(lst_ndvi_ndbi, aes(x = ndvi_promedio)) +
 library(plotly)
 
 # Ordenar de mayor a menor LST
-df_lst_ndbi_ndvi.temp <- order(lst_ndvi_ndbi$lst_promedio, decreasing=FALSE)
+df_lst_ndbi_ndvi.temp <-
+  order(lst_ndvi_ndbi$lst_promedio, decreasing = FALSE)
 # Nuevo data frame ordenado
-df_lst_ndbi_ndvi.ordenado_lst <- lst_ndvi_ndbi[df_lst_ndbi_ndvi.temp,]
+df_lst_ndbi_ndvi.ordenado_lst <-
+  lst_ndvi_ndbi[df_lst_ndbi_ndvi.temp, ]
 
 ay <- list(
   tickfont = list(color = "green"),
@@ -181,23 +186,128 @@ ay <- list(
   title = "NDVI"
 )
 
-plot_ly(data = df_lst_ndbi_ndvi.ordenado_lst,
-        x = ~ reorder(canton, -lst_promedio),
-        y = ~ lst_promedio,
-        name = 'LST',
-        type = 'scatter',
-        mode = 'lines',
-        line = list(color = "red")) %>%
-  add_trace(y = ~ ndvi_promedio,
-            name = 'NDVI',
-            mode = 'lines',
-            line = list(color = "green"),
-            yaxis = "y2") %>%  
-  layout(title = "La vegetación urbana regula la temperatura",
-         yaxis = list(title = "LST", tickfont = list(color = "red")),
-         yaxis2 = ay,
-         xaxis = list(title = "Cantón"),
-         legend = list(x = 0.5, y = 1.0),
-         hovermode = "compare")  %>%
+plot_ly(
+  data = df_lst_ndbi_ndvi.ordenado_lst,
+  x = ~ reorder(canton,-lst_promedio),
+  y = ~ lst_promedio,
+  name = 'LST',
+  type = 'scatter',
+  mode = 'lines',
+  line = list(color = "red")
+) %>%
+  add_trace(
+    y = ~ ndvi_promedio,
+    name = 'NDVI',
+    mode = 'lines',
+    line = list(color = "green"),
+    yaxis = "y2"
+  ) %>%
+  layout(
+    title = "La vegetación urbana regula la temperatura",
+    yaxis = list(title = "LST", tickfont = list(color = "red")),
+    yaxis2 = ay,
+    xaxis = list(title = "Cantón"),
+    legend = list(x = 0.5, y = 1.0),
+    hovermode = "compare"
+  )  %>%
   config(locale = "es")
+```
+
+## Mapa
+
+```{r}
+#-------------------- Paquetes --------------------
+
+library(flexdashboard)
+library(dplyr)
+library(sf)
+library(leaflet)
+library(leaflet.extras)
+library(leaflet.opacity)
+library(leafem)
+library(esri2sf)
+library(raster)
+
+#--------------- URL de geoservicios --------------
+
+url_agfs_limite_gam <-
+  "https://services9.arcgis.com/RrvMEynxDB8hycVO/arcgis/rest/services/gam_limite_gam/FeatureServer/0"
+
+url_raster_lst <-
+  "https://raw.githubusercontent.com/atlas-servicios-ecosistemicos-gam/datos-calentamiento-urbano/master/gam/LST_GAM_WEB.TIF"
+
+#--------------- Objetos sf y raster ---------------
+
+# Límite de la GAM
+sf_limite_gam <-
+  esri2sf(url_agfs_limite_gam)
+
+# Límite de la GAM (reproyectado a Web Mercator)
+sf_limite_gam_web <- 
+  sf_limite_gam %>%
+  st_transform(3857)
+
+# Capa raster de LST (en Web Mercator)
+raster_lst <-
+  raster(url_raster_lst) %>%
+  crop(sf_limite_gam_web) %>%
+  mask(sf_limite_gam_web)
+
+#---------------- Paletas de colores ---------------
+
+# LST
+colores_lst <- c("blue", "green", "yellow", "red")
+pal_lst <- 
+  colorNumeric(
+    colores_lst, 
+    values(raster_lst),
+    na.color = "transparent"
+  )
+
+# Mapa
+leaflet() %>%
+  addProviderTiles(providers$OpenStreetMap.Mapnik, group = "OpenStreetMap") %>%
+  addProviderTiles(providers$CartoDB.DarkMatter, group = "CartoDB Dark Matter") %>%
+  addProviderTiles(providers$Stamen.TonerLite, group = "Stamen Toner Lite") %>%
+  addProviderTiles(providers$Esri.WorldImagery, group = "Imágenes de ESRI") %>%
+  addPolygons(
+    data = sf_limite_gam,
+    color = "Purple",
+    fillColor = "transparent",
+    stroke = TRUE,
+    weight = 6.0,
+    group = "Límite de la GAM"
+  ) %>%
+  addRasterImage(
+    raster_lst, 
+    layerId = "raster",    
+    colors = pal_lst,
+    opacity = 0.6,
+    group = "LST"
+  ) %>%  
+  addLegend(
+    title = "LST (°C)",
+    values = values(raster_lst),
+    pal = pal_lst,
+    position = "bottomright",
+    group = "LST"
+  ) %>%    
+  addLayersControl(
+    baseGroups = c("OpenStreetMap", "CartoDB Dark Matter", "Stamen Toner Lite", "Imágenes de ESRI"),
+    overlayGroups = c("Límite de la GAM", "LST"),
+    options = layersControlOptions(collapsed = TRUE)    
+  ) %>%  
+  addMiniMap(
+    toggleDisplay = TRUE,
+    position = "bottomleft",
+    tiles = providers$OpenStreetMap.Mapnik
+  ) %>%
+  addScaleBar(
+    position = "bottomleft",
+    options = scaleBarOptions(imperial = FALSE)
+  ) %>%
+  addMouseCoordinates() %>%
+  addSearchOSM() %>%
+  addResetMapButton() %>%
+  addOpacitySlider(layerId = "raster")
 ```
