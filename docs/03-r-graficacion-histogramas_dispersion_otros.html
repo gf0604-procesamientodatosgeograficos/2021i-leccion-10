@@ -2387,6 +2387,15 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   }</style>
   <!--/radix_placeholder_distill-->
   <script src="site_libs/header-attrs-2.7/header-attrs.js"></script>
+  <script src="site_libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+  <script src="site_libs/plotly-binding-4.9.3/plotly.js"></script>
+  <script src="site_libs/typedarray-0.1/typedarray.min.js"></script>
+  <script src="site_libs/jquery-3.5.1/jquery.min.js"></script>
+  <link href="site_libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
+  <script src="site_libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
+  <link href="site_libs/plotly-htmlwidgets-css-1.57.1/plotly-htmlwidgets.css" rel="stylesheet" />
+  <script src="site_libs/plotly-main-1.57.1/plotly-latest.min.js"></script>
+  <script src="site_libs/plotly-locale-es-1.57.1/es.js"></script>
   <script src="site_libs/popper-2.6.0/popper.min.js"></script>
   <link href="site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
   <link href="site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
@@ -2462,6 +2471,10 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <li><a href="#gráficos-de-densidad">Gráficos de densidad</a></li>
 <li><a href="#gráficos-de-lollipops">Gráficos de <em>lollipops</em></a></li>
 <li><a href="#gráficos-de-dispersión">Gráficos de dispersión</a></li>
+</ul></li>
+<li><a href="#otros">Otros</a>
+<ul>
+<li><a href="#gráfico-de-doble-eje">Gráfico de doble eje</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -2653,6 +2666,48 @@ Este conjunto de datos forma parte del <a href="https://www.atlasverde.org/">Atl
 </code></pre>
 </div>
 <p><img src="03-r-graficacion-histogramas_dispersion_otros_files/figure-html5/unnamed-chunk-7-1.png" width="624" /></p>
+</div>
+<h1 id="otros">Otros</h1>
+<h2 id="gráfico-de-doble-eje">Gráfico de doble eje</h2>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://plotly-r.com'>plotly</a></span><span class='op'>)</span>
+
+<span class='co'># Ordenar de mayor a menor LST</span>
+<span class='va'>df_lst_ndbi_ndvi.temp</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/order.html'>order</a></span><span class='op'>(</span><span class='va'>lst_ndvi_ndbi</span><span class='op'>$</span><span class='va'>lst_promedio</span>, decreasing<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span>
+<span class='co'># Nuevo data frame ordenado</span>
+<span class='va'>df_lst_ndbi_ndvi.ordenado_lst</span> <span class='op'>&lt;-</span> <span class='va'>lst_ndvi_ndbi</span><span class='op'>[</span><span class='va'>df_lst_ndbi_ndvi.temp</span>,<span class='op'>]</span>
+
+<span class='va'>ay</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>
+  tickfont <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>color <span class='op'>=</span> <span class='st'>"green"</span><span class='op'>)</span>,
+  overlaying <span class='op'>=</span> <span class='st'>"y"</span>,
+  side <span class='op'>=</span> <span class='st'>"right"</span>,
+  title <span class='op'>=</span> <span class='st'>"NDVI"</span>
+<span class='op'>)</span>
+
+<span class='fu'><a href='https://docs.ropensci.org/plotly/reference/plot_ly.html'>plot_ly</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>df_lst_ndbi_ndvi.ordenado_lst</span>,
+        x <span class='op'>=</span> <span class='op'>~</span> <span class='fu'><a href='https://rdrr.io/r/stats/reorder.factor.html'>reorder</a></span><span class='op'>(</span><span class='va'>canton</span>, <span class='op'>-</span><span class='va'>lst_promedio</span><span class='op'>)</span>,
+        y <span class='op'>=</span> <span class='op'>~</span> <span class='va'>lst_promedio</span>,
+        name <span class='op'>=</span> <span class='st'>'LST'</span>,
+        type <span class='op'>=</span> <span class='st'>'scatter'</span>,
+        mode <span class='op'>=</span> <span class='st'>'lines'</span>,
+        line <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>color <span class='op'>=</span> <span class='st'>"red"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://docs.ropensci.org/plotly/reference/add_trace.html'>add_trace</a></span><span class='op'>(</span>y <span class='op'>=</span> <span class='op'>~</span> <span class='va'>ndvi_promedio</span>,
+            name <span class='op'>=</span> <span class='st'>'NDVI'</span>,
+            mode <span class='op'>=</span> <span class='st'>'lines'</span>,
+            line <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>color <span class='op'>=</span> <span class='st'>"green"</span><span class='op'>)</span>,
+            yaxis <span class='op'>=</span> <span class='st'>"y2"</span><span class='op'>)</span> <span class='op'>%&gt;%</span>  
+  <span class='fu'><a href='https://docs.ropensci.org/plotly/reference/layout.html'>layout</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"La vegetación urbana regula la temperatura"</span>,
+         yaxis <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"LST"</span>, tickfont <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>color <span class='op'>=</span> <span class='st'>"red"</span><span class='op'>)</span><span class='op'>)</span>,
+         yaxis2 <span class='op'>=</span> <span class='va'>ay</span>,
+         xaxis <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Cantón"</span><span class='op'>)</span>,
+         legend <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>0.5</span>, y <span class='op'>=</span> <span class='fl'>1.0</span><span class='op'>)</span>,
+         hovermode <span class='op'>=</span> <span class='st'>"compare"</span><span class='op'>)</span>  <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://docs.ropensci.org/plotly/reference/config.html'>config</a></span><span class='op'>(</span>locale <span class='op'>=</span> <span class='st'>"es"</span><span class='op'>)</span>
+</code></pre>
+</div>
+<div id="htmlwidget-b4e8ca52dbe7b6fa2a52" style="width:624px;height:384px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-b4e8ca52dbe7b6fa2a52">{"x":{"visdat":{"1e087fa54d4c":["function () ","plotlyVisDat"]},"cur_data":"1e087fa54d4c","attrs":{"1e087fa54d4c":{"x":{},"y":{},"mode":"lines","line":{"color":"red"},"name":"LST","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter"},"1e087fa54d4c.1":{"x":{},"y":{},"mode":"lines","line":{"color":"green"},"name":"NDVI","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter","yaxis":"y2","inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":"La vegetación urbana regula la temperatura","yaxis":{"domain":[0,1],"automargin":true,"title":"LST","tickfont":{"color":"red"}},"yaxis2":{"tickfont":{"color":"green"},"overlaying":"y","side":"right","title":"NDVI"},"xaxis":{"domain":[0,1],"automargin":true,"title":"Cantón","type":"category","categoryorder":"array","categoryarray":["San JosÃ©","Flores","BelÃ©n","Heredia","TibÃ¡s","San Pablo","Alajuela","Curridabat","Atenas","Santo Domingo","EscazÃº","Santa Ana","PoÃ¡s","Montes de Oca","Alajuelita","Desamparados","La UniÃ³n","Mora","Oreamuno","Santa Barbara","AserrÃ­","Goicoechea","San Isidro","San Rafael","Alvarado","Moravia","Barva","Cartago","ParaÃ­so","VÃ¡zquez de Coronado","El Guarco"]},"legend":{"x":0.5,"y":1},"hovermode":"compare","showlegend":true},"source":"A","config":{"showSendToCloud":false,"locale":"es"},"data":[{"x":["El Guarco","VÃ¡zquez de Coronado","ParaÃ­so","Cartago","Barva","Moravia","Alvarado","San Rafael","San Isidro","Goicoechea","AserrÃ­","Santa Barbara","Oreamuno","Mora","La UniÃ³n","Desamparados","Alajuelita","Montes de Oca","PoÃ¡s","Santa Ana","EscazÃº","Santo Domingo","Atenas","Curridabat","Alajuela","San Pablo","TibÃ¡s","Heredia","BelÃ©n","Flores","San JosÃ©"],"y":[29.1580963376,30.3444613554,31.8153750146,32.8784108237,33.1878422516,33.4086051128,33.4786157979,33.6988470653,35.0888376666,35.3090354693,35.7954290855,36.3011449567,36.308996669,36.4204560123,36.6117333396,37.1949069118,38.066144913,38.2987372559,38.8340132156,39.2812439075,39.392593108,41.0088385093,41.3584008036,41.9239134989,42.1132720432,43.0599730582,43.9847196816,44.3970592568,44.6968171575,44.7505312163,44.8940721178],"mode":"lines","line":{"color":"red"},"name":"LST","type":"scatter","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(31,119,180,1)"}},"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["El Guarco","VÃ¡zquez de Coronado","ParaÃ­so","Cartago","Barva","Moravia","Alvarado","San Rafael","San Isidro","Goicoechea","AserrÃ­","Santa Barbara","Oreamuno","Mora","La UniÃ³n","Desamparados","Alajuelita","Montes de Oca","PoÃ¡s","Santa Ana","EscazÃº","Santo Domingo","Atenas","Curridabat","Alajuela","San Pablo","TibÃ¡s","Heredia","BelÃ©n","Flores","San JosÃ©"],"y":[0.656102894652,0.545061565542,0.727353775823,0.593101846736,0.660390948066,0.475137406636,0.600268124008,0.629363665145,0.576598487043,0.489211359171,0.62307438701,0.654825878628,0.573439988916,0.637523091188,0.549859851677,0.534608553001,0.547814294054,0.438386072143,0.634102581291,0.540858082371,0.503714697644,0.499629593731,0.59137611713,0.357855349521,0.525893565303,0.425761776149,0.237262008129,0.310942567784,0.369005844508,0.386102600608,0.236218708835],"mode":"lines","line":{"color":"green"},"name":"NDVI","type":"scatter","yaxis":"y2","marker":{"color":"rgba(255,127,14,1)","line":{"color":"rgba(255,127,14,1)"}},"error_y":{"color":"rgba(255,127,14,1)"},"error_x":{"color":"rgba(255,127,14,1)"},"xaxis":"x","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </div>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
